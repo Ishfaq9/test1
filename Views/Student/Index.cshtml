@@ -1,0 +1,88 @@
+﻿@model test1.Models.Student
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+<div class="container">
+    <button class="btn btn-primary" id="btnadd">Add New Student</button>
+    
+</div>
+<hr />
+<div class="container">
+    <table class="table table-success table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Student Id</th>
+                <th>Student Name</th>
+                <th>Student Age</th>
+                <th>Student Email</th>
+                <th>Student Department</th>
+                <th>Student Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tb">
+
+        </tbody>
+    </table>
+
+</div>
+
+<div class="container">
+    <div class="modal" id="studentmodal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modaltitle"></h3>
+                </div>
+                <div class="modal-body">
+
+                    <input type="hidden" asp-for="sid"  value="0"/>
+                    <div class="mb-2">
+                        <label asp-for="name"></label>
+                        <input type="text" asp-for="name" class="form-control" placeholder="Name" />
+                    </div>
+
+                    <div class="mb-2">
+                        <label asp-for="age"></label>
+                        <input type="number" asp-for="age" class="form-control" placeholder="Age" />
+                    </div>
+
+                    <div class="mb-2">
+                        <label asp-for="email"></label>
+                        <input type="email" asp-for="email" class="form-control" placeholder="email" />
+                    </div>
+                    <div class="mb-2">
+                        <label asp-for="sdepartment"></label>
+                        <input type="text" asp-for="sdepartment" class="form-control" placeholder="department" />
+                    </div>
+                    <div class="mb-2">
+                        <label asp-for="status"></label>
+                        <input type="text" asp-for="status" class="form-control" placeholder="status" />
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary btn-sm" id="save" type="submit" onclick="Insert()"> Save</button>
+                    <button class="btn btn-success btn-sm" id="update" type="submit" style="display: none" onclick="Update()"> Update</button>
+                    <button class="btn btn-danger btn-sm" id="close" onclick="Modalhide()"> Close</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<hr />
+
+<div class="container">
+    <button class="btn btn-primary" id="redirectToIndexButton">View Student info with Department </button>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/studentjs.js"></script>
+
