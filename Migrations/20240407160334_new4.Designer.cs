@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using test1.DAL;
 
@@ -10,9 +11,11 @@ using test1.DAL;
 namespace test1.Migrations
 {
     [DbContext(typeof(MyAppDbContext))]
-    partial class MyAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240407160334_new4")]
+    partial class new4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

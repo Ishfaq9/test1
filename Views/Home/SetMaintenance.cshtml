@@ -1,0 +1,78 @@
+﻿@{
+
+    var systemSettings = ViewBag.SystemSettings as List<SystemSetting>;
+    var creditCardSettings = ViewBag.CreditCardSettings as List<CreditCardSetting>;
+    string OBDStatus = systemSettings.FirstOrDefault(w => w.ParamName == "OBDStatus").ParamValue;
+    string TEXTMStatus = systemSettings.FirstOrDefault(w => w.ParamName == "TEXTMStatus").ParamValue;
+}
+
+<div class="row">
+    <div class="col-md-4">
+        @if (systemSettings.FirstOrDefault(w => w.ParamName == "OBDStatus")?.ParamValue == "1")
+        {
+            <p style="background-color:#d4edda; border-color: #f5c6cb;"><strong>Brilliant OBD Service is currently On.</strong></p>
+        }
+        else
+        {
+            <p style="background-color: #f8d7da; border-color: #c3e6cb;"><strong>Brilliant OBD Service is currently Off.</strong></p>
+        }
+    </div>
+    <div class="col-md-4">
+        <h2>OBD Maintenance</h2>
+    </div>
+    <div class="col-md-4">
+        <form asp-controller="Home" asp-action="SetOBDMaintenance" method="post" class="row g-3 align-items-center">
+            <div class="col-auto">
+                <select name="isMaintenance" id="isMaintenance" class="form-control">
+                    <option value="1">On</option>
+                    <option value="0">Off</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <button style="color: #fff; background-color: #5bc0de; border-color: #46b8da;" type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        @if (systemSettings.FirstOrDefault(w => w.ParamName == "OBDStatus")?.ParamValue == "1")
+        {
+            <p style="background-color:#d4edda; border-color: #f5c6cb;"><strong>Brilliant OBD Service is currently On.</strong></p>
+        }
+        else
+        {
+            <p style="background-color: #f8d7da; border-color: #c3e6cb;"><strong>Brilliant OBD Service is currently Off.</strong></p>
+        }
+    </div>
+    <div class="col-md-4">
+        <h2>OBD Maintenance</h2>
+    </div>
+    <div class="col-md-4">
+        <form asp-controller="Home" asp-action="SetTextSmsMaintenance" method="post" class="row g-3 align-items-center">
+            <div class="col-auto">
+                <select name="isMaintenance" id="isMaintenance" class="form-control">
+                    <option value="1">On</option>
+                    <option value="0">Off</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <button style="color: #fff; background-color: #5bc0de; border-color: #46b8da;" type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var OBDStatus = '@OBDStatus';
+        var TextStatus = '@TEXTMStatus';
+        var selectElement = document.getElementById('isMaintenance');
+        if (OBDStatus == "1" || TextStatus) {
+            selectElement.value = "0";
+        } else {
+            selectElement.value = "1";
+        }
+    });
+</script>

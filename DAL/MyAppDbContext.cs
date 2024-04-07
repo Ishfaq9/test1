@@ -10,6 +10,9 @@ namespace test1.DAL
         }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
+        public virtual DbSet<SystemSetting> SystemSettings { get; set; }
+        public virtual DbSet<CreditCardSetting> CreditCardSettings { get; set;}
+
 
     }
 }
